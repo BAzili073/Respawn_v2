@@ -2,6 +2,9 @@
 #include <MySeven.h>
 IRsend irsend;
 
+
+#define DEBUG
+
 #define RESP_COMM 0x8305E8
 #define MINE_COMM 0x6384E7//0x8300E8
 #define ADD_IK_LED 2
@@ -47,7 +50,7 @@ indicator display1(D_A,D_B,D_C,D_D,D_E,D_F,D_G,0,D_D1,D_D2,D_D3);
 
 #define KIT_WEAPONS 15
 int time_mine_forready;
-byte time_led;
+byte time_led = 0;
 
 byte mine_state = MINE_NOT_READY;
 byte model;
@@ -100,10 +103,10 @@ void  loop ( )
       dumpInfo(&results);           // Output the results
       irrecv.resume();              // Prepare for the next value
      }
-     check_buttons();
   }else{
-   timerIsr();
+   
   }
+   timerIsr();
    if (time_on_disp > 0){
       display_set(disp_number);
    }

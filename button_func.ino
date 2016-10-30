@@ -39,12 +39,16 @@ void button_mode_press(){
       case MODE_MINE:
         mine_state = MINE_NOT_READY;
         COMMAND =  MINE_COMM;
+        time_led = 5;
 //        COMMAND =  weapons[1];
 //        time_send = 50;
         digitalWrite(ADD_IK_LED,HIGH);
       break;
       case MODE_MAX:
         digitalWrite(ADD_IK_LED,LOW);
+        digitalWrite(LED_GREEN,LOW);
+        digitalWrite(LED_BLUE,LOW);
+        digitalWrite(LED_RED,LOW);
         COMMAND = RESP_COMM;
 //        COMMAND =  0x1D88A5
         mode = MODE_RESP_TIME;
